@@ -25,19 +25,21 @@
 				</a>
 			</h1>
 			<h2 class="site-description"> <?php bloginfo('description'); ?> </h2>
-			<nav>
-				<ul class="nav">
-					<?php wp_list_pages( array(
-						'depth' => 1,
-						'title_li' => '',
-						) ); ?>
-					</ul>
-				</nav>
+			
+			<?php wp_nav_menu( array(
+				'theme_location'	=>	'main_nav',	 //registered in functions.php
+				'container'			=> 	'nav',		 //wrap in <nav> tag
+				'fallback_cb'		=> 	'',			 //turn off the menu if not set
+			) ); ?>
+
 		</div><!-- end .top-bar -->
 		
-		<ul class="utilities">
-			<li><a href="/contact-us/">Contact Us</a></li>
-			<li><a href="/location/">Location</a></li>
-		</ul>
+		<?php wp_nav_menu( array(
+			'theme_location'	=>  'utilities', 	//registered in functions.php
+			'fallback_cb'		=> 	'',				//no fallback behavior
+			'menu_class'		=> 	'utilities',	//<ul class="utilities">
+			'container'			=> 	false,			//no div or nav container
+		) ); ?>
+
 		<?php get_search_form(); //includes searchform.php if it exists, if not, this outputs the default search bar ?>	
 	</header>

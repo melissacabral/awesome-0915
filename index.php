@@ -31,6 +31,21 @@
 		</article><!-- end post -->
 
 		<?php endwhile; ?>
+
+		<section class="pagination">
+			<?php 
+			//The safe way to run plugin functions
+			//Check to see if the plugin is active before calling its functions
+			//fallback to the default WP pagination
+			if( function_exists('wp_pagenavi')  AND ! wp_is_mobile() ){
+				wp_pagenavi();
+			}else{
+				previous_posts_link( '&larr; Newer Posts' ); 	//10 newer posts
+				next_posts_link( 'Older Posts &rarr;' );  		//10 older posts
+			}
+			?>
+		</section>
+
 	<?php else: ?>
 
 	<h2>Sorry, no posts found</h2>

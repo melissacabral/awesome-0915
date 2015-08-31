@@ -23,6 +23,14 @@
 		<?php comments_template();  //comment list and the form ?>
 
 		<?php endwhile; ?>
+
+		<section class="pagination">
+			<?php 			
+			previous_post_link( '%link ', 'Older: %title' );	//older	
+			next_post_link( '%link', 'Newer: %title' ); 		//newer post
+			?>
+		</section>
+
 	<?php else: ?>
 
 	<h2>Sorry, no posts found</h2>

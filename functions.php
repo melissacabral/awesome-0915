@@ -47,4 +47,19 @@ function awesome_readmore(){
 }
 add_filter( 'excerpt_more', 'awesome_readmore' );
 
+
+/**
+ * Activate two menu locations
+ * They will be displayed in header.php
+ * @since  0.1
+ */
+function awesome_menu_areas(){
+	register_nav_menus( array(
+		//code name => 	 human-readable name
+		'main_nav'	=>	'Main Navigation Area',
+		'utilities'	=> 	'Utility Bar in the top corner',
+	) );
+}
+add_action( 'init', 'awesome_menu_areas' );
+
 //no close php
