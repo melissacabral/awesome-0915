@@ -16,6 +16,7 @@
 
 			<div class="entry-content">
 				<?php the_content(); ?>
+				<?php wp_link_pages(); ?>
 			</div>
 				
 		</article><!-- end post -->
@@ -32,5 +33,5 @@
 
 </main><!-- end #content -->
 
-<?php get_sidebar(); //include sidebar.php ?>
+<?php get_sidebar('page'); //include sidebar.php ?>
 <?php get_footer(); //include footer.php ?>

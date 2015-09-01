@@ -1,4 +1,7 @@
 <?php
+//required: define max-width of auto-embeds
+if ( ! isset( $content_width ) ) $content_width = 700;
+
 //Use this file to activate 'sleeping' features or create your own re-usable functionality
 
 //activate "featured images" for posts
@@ -61,5 +64,57 @@ function awesome_menu_areas(){
 	) );
 }
 add_action( 'init', 'awesome_menu_areas' );
+
+/**
+ * Add four Widget Areas (dynamic sidebars)
+ * @since  0.1
+ */
+function awesome_widget_areas(){
+	register_sidebar( array(
+		'name'			=> 'Blog Sidebar',		//human-readable
+		'id'			=> 'blog-sidebar',		//code-friendly slug
+		'description'	=> 'Appears next to blog posts and archives',
+		'before_widget'	=> '<section id="%1$s" class="widget %2$s">',
+		'after_widget'	=> '</section>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+	register_sidebar( array(
+		'name'			=> 'Footer Area',		//human-readable
+		'id'			=> 'footer-area',		//code-friendly slug
+		'description'	=> 'Appears at the bottom of all templates',
+		'before_widget'	=> '<section id="%1$s" class="widget %2$s">',
+		'after_widget'	=> '</section>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+	register_sidebar( array(
+		'name'			=> 'Home Area',		//human-readable
+		'id'			=> 'home-area',		//code-friendly slug
+		'description'	=> 'Appears on the Front page of the site',
+		'before_widget'	=> '<section id="%1$s" class="widget %2$s">',
+		'after_widget'	=> '</section>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+	register_sidebar( array(
+		'name'			=> 'Page Sidebar',		//human-readable
+		'id'			=> 'page-sidebar',		//code-friendly slug
+		'description'	=> 'Appears next to the pages',
+		'before_widget'	=> '<section id="%1$s" class="widget %2$s">',
+		'after_widget'	=> '</section>',
+		'before_title'	=> '<h3 class="widget-title">',
+		'after_title'	=> '</h3>',
+	) );
+
+}
+add_action( 'widgets_init', 'awesome_widget_areas' );
+
+
+//Attach JS files
+function awesome_scripts(){
+	if ( is_singular() ) wp_enqueue_script( "comment-reply" ); 
+}
+add_action( 'wp_enqueue_scripts', 'awesome_scripts' );
 
 //no close php
