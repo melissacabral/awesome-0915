@@ -981,7 +981,8 @@ img.attachment-thumbnail{
 	float: left;
 	margin: 0 1em 1em 0;
 }
-.post-type-archive-product img.attachment-thumbnail{
+.post-type-archive-product img.attachment-thumbnail,
+.tax-brand img.attachment-thumbnail{
 	float:none;
 	margin: 0;
 }

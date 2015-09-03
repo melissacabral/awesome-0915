@@ -16,6 +16,9 @@
 			</h2>
 
 			<div class="entry-content">
+
+				<?php the_terms( get_the_id(), 'brand' ); ?>
+
 				<?php 
 				//show a list of all custom fields
 				the_meta();  ?>
@@ -45,5 +48,5 @@
 
 </main><!-- end #content -->
 
-<?php get_sidebar(); //include sidebar.php ?>
+<?php get_sidebar('shop'); //include sidebar-shop.php ?>
 <?php get_footer(); //include footer.php ?>

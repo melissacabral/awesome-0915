@@ -4,7 +4,7 @@
 	<?php //THE LOOP
 		if( have_posts() ): ?>
 
-		<h2 class="archive-title"><?php post_type_archive_title(); ?></h2>
+		<h2 class="archive-title">All products by: <?php single_cat_title(); ?></h2>
 
 		<?php while( have_posts() ): the_post(); ?>
 
@@ -23,8 +23,6 @@
 			</h2>
 			
 			<div class="entry-content">
-				<?php the_terms( get_the_id(), 'brand' ); ?>
-
 				<?php the_excerpt();  //short version of the_content() ?>
 
 				<?php 
