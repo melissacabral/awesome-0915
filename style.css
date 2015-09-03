@@ -981,6 +981,10 @@ img.attachment-thumbnail{
 	float: left;
 	margin: 0 1em 1em 0;
 }
+.post-type-archive-product img.attachment-thumbnail{
+	float:none;
+	margin: 0;
+}
 /*
 ==Forms!
 */
@@ -1425,6 +1429,9 @@ body.single-product .post-meta span{
 .contact-info{
 	display: none;
 }
+
+
+
 /*==Media Queries*/
 @media screen and (min-width: 850px) {
 	h1.site-name{
