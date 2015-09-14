@@ -32,6 +32,13 @@
 
 	<?php endif;  //end THE LOOP ?>
 
+	
+	<section id="featured-content" class="clearfix">
+		
+		<?php awesome_products_list(6); ?>	
+
+	</section>
+
 </main><!-- end #content -->
 
 <?php get_sidebar('frontpage'); //include sidebar-frontpage.php ?>

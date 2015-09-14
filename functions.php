@@ -117,4 +117,59 @@ function awesome_scripts(){
 }
 add_action( 'wp_enqueue_scripts', 'awesome_scripts' );
 
+add_action('admin_enqueue_scripts', 'chrome_fix');
+function chrome_fix() {
+	if ( strpos( $_SERVER['HTTP_USER_AGENT'], 'Chrome' ) !== false )
+		wp_add_inline_style( 'wp-admin', '#adminmenu { transform: translateZ(0); }' );
+}
+
+
+/**
+ * Display a list of product thumbnails
+ * @param int $number the number of products to show. Defaults to 5.
+ */
+function awesome_products_list( $number = 5 ){
+	$product_query = new WP_Query( array(
+			'post_type'			=>  'product',
+			'posts_per_page'	=> $number,	//LIMIT
+		) ); 
+
+		//custom loop
+		if( $product_query->have_posts() ){
+		?>
+		<ul class="product-list">
+			<?php while( $product_query->have_posts() ){ 
+					 $product_query->the_post(); ?>
+			<li>
+				<a href="<?php the_permalink(); ?>">
+					<?php the_post_thumbnail( 'thumbnail' ); ?>
+				</a>
+				<div class="product-info">
+					<h3><?php the_title(); ?></h3>
+					<p><?php the_excerpt(); ?></p>
+				</div>
+			</li>
+			<?php } //end while ?>
+		</ul>
+		<?php } //end if 
+		//done with custom query. clean up!
+		wp_reset_postdata();
+}
+
+/**
+ * Example use of pre_get_posts
+ * Use this to modify normal behavior of any main query and loop
+ * @param  $query - the default query object
+ */
+function awesome_altered_blog( $query ){
+	//make sure we are viewing the blog's main query
+	if( $query->is_home() AND $query->is_main_query() ){
+		//exclude posts that are in category 31 (Markup)
+		$query->set( 'cat', '-31' );
+		//set a different LIMIT
+		$query->set( 'posts_per_page', '5' );
+	}
+}
+add_action( 'pre_get_posts', 'awesome_altered_blog' );
+
 //no close php

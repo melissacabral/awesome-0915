@@ -1532,3 +1532,35 @@ body.single-product .post-meta span{
 		float:left;
 	}
 }
+
+/*
+== Additions for front page products
+*/
+.product-list li{
+	float:left;
+	width:150px;
+	margin:0 25px 0 0;
+	position: relative;
+	overflow: hidden;
+}
+/*hover description*/
+.product-list .product-info{
+	position: absolute;
+	left:0;
+	bottom: 0;
+	height:70%;
+	width:100%;
+	text-align: center;
+	padding:1em;
+	background-color: #2AC89D;
+	opacity: 0;
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-in;
+	-ms-transition: all 200ms ease-in;
+	-o-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+}
+.product-list li:hover .product-info{
+	opacity: 1;
+	bottom:1em;
+}
